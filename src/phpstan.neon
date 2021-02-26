@@ -1,0 +1,11 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+  level: max
+  paths:
+    - app
+    - tests
+  excludes_analyse:
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+####

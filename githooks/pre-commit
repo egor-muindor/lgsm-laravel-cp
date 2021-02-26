@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+function __run() #(step, name, cmd)
+{
+    local color output exitcode
+    printf "[%s] %-20s" "$1" "$2"
+    output=$(eval "$3" 2>&1)
+    exitcode=$?
+    if [[ 0 == $exitcode || 130 == $exitcode ]]; then
+        echo -e "OK!"
+    else
+        echo -e "NOK!\n\n\n$output"
+        exit 1
+    fi
+}
+#modified="git diff --diff-filter=M --name-only --cached  | grep \".php$\""
+__run "1/2" "make analyse" "make analyse"
+__run "2/2" "code style" "make style"

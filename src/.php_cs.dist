@@ -1,0 +1,19 @@
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+$finder = \PhpCsFixer\Finder::create()
+    ->exclude('Infrastructure/Services/Generated')
+    ->exclude('Rules')
+    ->in([
+        __DIR__ . '/app',
+        __DIR__ . '/tests'
+    ]);
+
+return (new \PhpCsFixer\Config())
+    ->setFinder($finder)
+    ->setRules([
+        '@PSR12' => true,
+        'declare_strict_types' => true,
+    ])
+    ->setRiskyAllowed(true);
